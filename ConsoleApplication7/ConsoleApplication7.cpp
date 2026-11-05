@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 using namespace std; 
 
 /* zadanie 0
@@ -50,7 +52,12 @@ double odejmowanie(double a, double b);
 double mnozenie(double a, double b); 
 double dzielenie(double a, double b); 
 float suma(int liczbaskladnikow);
-
+double obwod(double a, double b); 
+double objetosc(); 
+int potegowanie(int a, int b); 
+int silnia(int n); 
+int potegowaniedwojki(int dojakiejpotegi); 
+void losowanie(int szczesliwynumerek); 
 
 
 int main() {
@@ -68,6 +75,13 @@ int main() {
     float pierwszaliczbadosredniej; 
     float drugaliczbadosredniej; 
     int liczbaskladnikow; 
+    double bok1 = 2.7; 
+    double bok2 = 8.5; 
+    int podstawapotegi; 
+    int wykladnikpotegi; 
+    int liczbadosilni; 
+    int wykladnikdwojki; 
+    int szczesliwy; 
     cout << "Podaj imie" << endl; 
     cin >> imiee;  
     cout << "Czesc " << imie(imiee) << endl; 
@@ -122,7 +136,27 @@ int main() {
     cout << "Podaj liczbe skladnikow" << endl;
     cin >> liczbaskladnikow;
     float wyniksumy= suma(liczbaskladnikow);
-    cout << "Suma to " << wyniksumy; 
+    cout << "Suma to " << wyniksumy << endl; 
+    cout << "Obwod prostokata wynosi " << obwod(bok1, bok2) << endl; 
+    cout << "Objetosc prostopadloscianu wynosi" << objetosc() << endl; 
+    cout << "Podaj podstawe potegi" << endl; 
+    cin >> podstawapotegi; 
+    cout << "Podaj wykladnik potegi" << endl; 
+    cin >> wykladnikpotegi; 
+    cout << "Wynik potegowania to " << potegowanie(podstawapotegi, wykladnikpotegi) << endl; 
+    cout << "Podaj liczbe ktorej silnie chcesz policzyc" << endl; 
+    cin >> liczbadosilni; 
+    cout << "Silnia wynosi " << silnia(liczbadosilni) << endl; 
+    cout << "Do jakiej potegi chcesz podniesc 2- podaj wykladnik" << endl; 
+    cin >> wykladnikdwojki; 
+    cout << "Wynik to " << potegowaniedwojki(wykladnikdwojki) << endl; 
+    do {
+        cout << "Podaj szczesliwy numerek z przedzialu 1-10" << endl;
+        cin >> szczesliwy;
+    } while (szczesliwy > 10 || szczesliwy < 0); 
+    losowanie(szczesliwy);
+
+
     return 0; 
 }
 
@@ -230,4 +264,49 @@ float suma(int x) {
         licznik = licznik + liczba;
 
     } return licznik; 
+}
+//zadanie 11
+double obwod(double a, double b) {
+    double obwodprostokata = 2*(a + b); 
+    return obwodprostokata; 
+}
+//zadanie 12
+double objetosc() {
+    double a = 13; 
+    double b = 6.5;
+    double c = 9; 
+    double objetoscprostopadloscianu = a * b * c; 
+    return objetoscprostopadloscianu; 
+}
+//zadanie 13 
+int potegowanie(int a, int b) {
+    int z = 1; 
+    for (int i = 1; i <= b; i++) {
+        z = z * a; 
+    }
+    return z; 
+}
+//zadanie 14
+int silnia(int n) {
+    int wynik = 1; 
+    for (int i = 1; i <= n; i++) {
+        wynik = wynik * i;
+    } return wynik; 
+}
+//zadanie 15
+int potegowaniedwojki(int dojakiejpotegi) {
+    int wynik = potegowanie(2, dojakiejpotegi); 
+    return wynik; 
+}
+//zadanie 16 
+void losowanie(int szczesliwynumerek) {
+    int licznik = 0;
+    srand(time(NULL));
+    for (int i = 1; i <= 10; i++) {
+        int losowaliczba = (rand() % 10) + 1;
+        if (losowaliczba == szczesliwynumerek) {
+            licznik = licznik + 1;
+        }
+    }  int jakiprocent = (licznik *100) /10;
+    cout << "Szczesliwy numerek zostal wylosowany " << licznik << "razy oraz stanowi " << jakiprocent << "% wszystkich wylosowanych liczb" << endl;
 }
