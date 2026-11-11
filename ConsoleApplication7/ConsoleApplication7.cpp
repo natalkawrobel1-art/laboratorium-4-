@@ -58,6 +58,9 @@ int potegowanie(int a, int b);
 int silnia(int n); 
 int potegowaniedwojki(int dojakiejpotegi); 
 void losowanie(int szczesliwynumerek); 
+int dzielenieparzystych(int n); 
+int dzielenienieparzystych(int n); 
+
 
 
 int main() {
@@ -82,6 +85,7 @@ int main() {
     int liczbadosilni; 
     int wykladnikdwojki; 
     int szczesliwy; 
+    int wynik = 0; 
     cout << "Podaj imie" << endl; 
     cin >> imiee;  
     cout << "Czesc " << imie(imiee) << endl; 
@@ -155,7 +159,15 @@ int main() {
         cin >> szczesliwy;
     } while (szczesliwy > 10 || szczesliwy < 0); 
     losowanie(szczesliwy);
-
+    for (int z = 1; z <= 100; z++) {
+        if (z % 2 == 0) {
+            wynik = dzielenieparzystych(z); 
+        }
+        else {
+            wynik = dzielenienieparzystych(z); 
+        }
+    }
+    zwracaniedzielenia(6); 
 
     return 0; 
 }
@@ -309,4 +321,24 @@ void losowanie(int szczesliwynumerek) {
         }
     }  int jakiprocent = (licznik *100) /10;
     cout << "Szczesliwy numerek zostal wylosowany " << licznik << "razy oraz stanowi " << jakiprocent << "% wszystkich wylosowanych liczb" << endl;
+}
+//zadanie 17 
+int dzielenieparzystych(int n) {
+    return n / 2; 
+}
+
+int dzielenienieparzystych(int n) {
+    return (n - 1) / 2; 
+}
+//zadanie 18 
+int zwracaniedzielenia(int a) {
+    if (a % 6 == 0) {
+        return 0;
+    }
+    else if (a % 3 == 0) {
+        return a * a * a; 
+    }
+    else if (a % 2 == 0) {
+        return a * a; 
+    }
 }
